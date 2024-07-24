@@ -1,0 +1,315 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Racing Sans One", sans-serif;
+}
+
+.flex{
+    display: flex;
+    margin: 0 auto;
+}
+
+.interface{
+    width: 90%;
+    margin: 0 auto;
+}
+
+.interface-1{
+    width: 80%;
+    margin: 0 auto;
+}
+
+.interface-2{
+    width: 80%;
+    margin: 0 auto;
+}
+
+.position-A{
+    position: absolute;
+}
+
+
+
+
+/* =================== LADDING ================================= */
+
+
+
+.flex-ladding{
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    width: 88%;
+    margin: 0 auto;
+    padding-top: 15rem;
+}
+
+.d-block{
+    height: 95vh;
+    z-index: 9;
+}
+
+.poke-ladding{
+    width: 28rem;
+    height: 28rem;
+    opacity: .8;
+    animation: flutuar 2.7s ease-in-out infinite;
+}
+
+.agua{
+    font-size: 5.5rem;
+    font-weight: 900;
+    opacity: .9;
+    color: rgba(14, 64, 110, 0.986);
+
+}
+
+.agua-p{
+    padding-top: 2rem;
+    max-width: 45rem;
+    font-size: 1.5rem;
+    font-weight: 400;
+    color:  rgba(14, 64, 110, 0.986);
+
+}
+
+.agua-btn button{
+    background-color:  rgba(14, 64, 110, 0.986);
+    border: none;
+    color: rgba(255, 255, 255, 0.76);
+    font-size: 1.9rem;
+    font-weight: 700;
+    border-radius: 30px;
+    width: 100%;
+    height: 3rem;
+   margin-top: 3rem;
+}
+
+.fogo{
+    font-size: 5.5rem;
+    font-weight: 900;
+    opacity: .9;
+    color: rgba(73, 13, 13, 0.822);
+}
+
+.fogo-p{
+    padding-top: 2rem;
+    max-width: 45rem;
+    font-size: 1.5rem;
+    font-weight: 400;
+    color:  rgba(73, 13, 13, 0.822);
+}
+
+.fogo-btn button{
+    background-color:  rgba(73, 13, 13, 0.822);
+    border: none;
+    color: rgba(255, 255, 255, 0.76);
+    font-size: 1.9rem;
+    font-weight: 700;
+    border-radius: 30px;
+    width: 100%;
+    height: 3rem;
+   margin-top: 3rem;
+}
+
+.grama-btn button{
+    background-color:  rgba(13, 73, 40, 0.822);
+    border: none;
+    color: rgba(255, 255, 255, 0.76);
+    font-size: 1.9rem;
+    font-weight: 700;
+    border-radius: 30px;
+    width: 100%;
+    height: 3rem;
+   margin-top: 3rem;
+}
+
+.grama{
+    font-size: 5.5rem;
+    font-weight: 900;
+    opacity: .9;
+    color: rgba(13, 73, 40, 0.822);
+}
+
+.grama-p{
+    padding-top: 2rem;
+    max-width: 45rem;
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: rgba(13, 73, 40, 0.822);
+}
+
+
+
+/* =============== populares ================= */
+
+
+.pokedex {
+    
+    background-color: rgb(0, 0, 0);
+    height: 200vh;
+}
+
+.fundo-img{
+    position: absolute;
+    width: 100%;
+}
+
+.fundo-img img{
+    width: 100%;
+    opacity: .2;
+}
+
+.tipos-poke img{
+    height: 30px;
+    width: 30px;
+    margin-right: 3px;
+}
+
+.input-group{
+    padding-top: 5rem;
+}
+
+.input-group input{
+    font-size: 1.3rem;
+}
+
+/* ================ card-poke ========================== */
+
+.grid-dex{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    margin-top: 9rem;
+    gap: 2rem;
+}
+
+
+.card-poke{
+    background-image: linear-gradient(to top, #802424, #721919, #96242448, #a65c5c2c);
+    box-shadow: 0 3px 32px 0 rgba(99, 100, 117, 0.288);
+    backdrop-filter: blur( 5.5px );
+    -webkit-backdrop-filter: blur( 5.5px );
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 50px;
+    border-top: none;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 5rem;
+    
+}
+
+.card-poke img{
+    width: 100%;
+    margin-top: -70px;
+}
+
+.card-poke .nome-poke, .altura, .peso{
+    color: white;
+}
+
+.info-poke{
+    display: flex;
+    justify-content: space-between;
+    width: 75%;
+    margin: 0 auto;
+}
+
+.altura, .peso{
+    padding-top: 4PX;
+}
+
+.altura h3, .peso h3{
+    margin-top: -1rem;
+}
+
+.tipo-poke{
+    display: flex;
+    justify-content: space-between;
+    gap: 5px;
+}
+
+.tipo-poke span{
+    font-size: 1.3rem;
+    color: white;
+    width: 90px;
+    border-radius: 5px;
+}
+
+.card-poke button{
+    border: none;
+    font-size: 25px;
+    width: 70%;
+    border-radius: 5px;
+    margin-top: 3px;
+    margin-bottom: 15px;
+    background-color: #1a1a1a;
+    color: white;
+}
+
+
+/* =============== tipos ============== */
+
+.fogo1{
+    background-color: #ffb006d0;
+}
+
+.inseto{
+    background-color: #92B34B;
+}
+
+.dragon{
+    background-color: #1D69B2;
+}
+
+.eletrico{
+    background-color: #E8D340;
+}
+
+.fada{
+    background-color: #C695CC;
+}
+
+.lutador{
+    background-color: #9C3F61;
+}
+
+.voador{
+    background-color: #96A7DD;
+}
+
+.ghost{
+    background-color: #5A658F;
+}
+
+.planta3{
+    background-color: #67B567;
+}
+
+.agua2{
+    background-color: #027AA9;
+}
+
+.metal{
+    background-color: #4e4e4e;
+}
+
+.dark{
+    background-color: #000000;
+}
+
+
+
+
+@keyframes flutuar {
+  0%, 100%{
+    transform: translateY(5px);
+  }
+
+  50%{
+    transform: translateY(-25px);
+  }
+}
