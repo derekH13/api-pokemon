@@ -1,10 +1,8 @@
-import {PokemonDados, Pokemon,} from './classes/pokemon'
+import {Util, pokeDados, pokemonTipo} from './classes/Util'
+import {Pokemon} from './classes/pokemon'
 
-const gridDex: HTMLElement | null = document.querySelector('.grid-dex')
-
-let poke, pesquisar = '102'
-
-
+const InputPesq: HTMLInputElement | null = document.querySelector('.input-group input')
+const pai: HTMLElement | null = document.querySelector('.grid-dex')
 
 
 
@@ -14,97 +12,152 @@ let poke, pesquisar = '102'
 
 
 
+// ============================= função ==================================
 
 
-// ==================== função ==============================
+//função de fazer a requisição do nome do pokemon
+const pesquisarPoke = () => {
+    if(!InputPesq)return
 
+    const pesquisa = InputPesq.value
 
-    //faz a requisição/ deixando de um jeito para facilitar o uso
-async function consultaPoke(pesquisa: string): Promise<Pokemon | undefined>{
-    try{
-        const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pesquisa}`)
+    Util.requisicao(pesquisa).then(result => { 
+        if(!result)return
+        
+        let pokePerson = new Pokemon(result)
+
+        if(!pai)return
+        pokePerson.montarCard(pai)
+        
     
-        if(!response.ok){
-            throw new Error(`deu ruim ${(await response).status}`)
-        }
-        const data: Pokemon = await response.json()
-        return data
-    
-    }catch(Error){
-        console.error(`Requisição Não Realizada ${Error}`)
-    } 
-return
+    })
+
 }
-    
-    //separa as informações que eu vou usar/ usando metodo asyc para poder usar await e trabalhando com promise
-async function separaPoke(pesquisa: string): Promise<Pokemon | null>{
-    try {
-        const data = await consultaPoke(pesquisa);
-        if (!data) return null;
-    
-        const result = {
-                name: data.name,
-                id: data.id,
-                abilities: data.abilities,
-                height: data.height,
-                types: data.types,
-                weight: data.weight,
-                sprites: data.sprites,
-                forms: data.forms
-        };
-        return result;
-    } catch (error) {
-        console.error('Erro ao buscar dados do Pokémon:', error);
-        return null;
+
+//requisição atraves do array que o tipo retorna
+const tipoPokemon = (tipo: string) => {
+
+    const pai: HTMLElement | null = document.querySelector('.grid-dex')
+    if(!pai)return
+
+
+    //limpando a grid
+    let cardDex: NodeListOf<HTMLElement> | undefined = pai.querySelectorAll('.card-poke')
+    for(const card of cardDex){
+        card.remove()
     }
 
 
 
 
 
+    Util.requisicaoTipos(tipo).then(data => {
+        if(!data)return
+
+        for(let i = 0; i < 40; i ++){
+
+            Util.requisicao(data[i].pokemon.name).then(data => {
+                if(!data)return
+                if(!pai)return
+    
+                let pokePerson = new Pokemon(data)
+    
+                pokePerson.montarCard(pai)
+            })
+        }
 
 
 
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-//function para pesquisar por um pokemon
-const buscar = () => {
-    separaPoke(pesquisar).then(data => {
-    if(!data)return
-
-    poke = new PokemonDados(data)
-
-    poke.montarCard(gridDex)
 
 
     })
-
-
 }
 
 
 
 
 
-// ============================= event =====================
 
-document.querySelector('#button-addon2')?.addEventListener('click', () => {
-    const x: HTMLInputElement | null = document.querySelector('input.form-control')
-    if(!x)return
-    
-    pesquisar = x.value
-    buscar()
-})
+
+
+
+// ===================================== event ===================================
+
+const btnPesquisa: HTMLButtonElement | null = document.querySelector('#button-addon2')
+const btnPsifico:  HTMLButtonElement | null = document.querySelector('.tipoPsifico')
+const btnDark:  HTMLButtonElement | null = document.querySelector('.tipoDark')
+const btnPlanta:  HTMLButtonElement | null = document.querySelector('.tipoGrass')
+const btnBug:  HTMLButtonElement | null = document.querySelector('.tipoBug')
+const btnFlying:  HTMLButtonElement | null = document.querySelector('.tipoFlying')
+const btnNormal:  HTMLButtonElement | null = document.querySelector('.tipoNormal')
+const btnWater:  HTMLButtonElement | null = document.querySelector('.tipoWater')
+const btnDragon:  HTMLButtonElement | null = document.querySelector('.tipoDragon')
+const btnGhost:  HTMLButtonElement | null = document.querySelector('.tipoGhost')
+const btnPoison:  HTMLButtonElement | null = document.querySelector('.tipoPoison')
+const btnFire:  HTMLButtonElement | null = document.querySelector('.tipoFire')
+const btnIce:  HTMLButtonElement | null = document.querySelector('.tipoIce')
+
+
+
+
+
+
+
+
+if(btnPsifico){
+    btnPsifico.addEventListener('click', () => tipoPokemon('psychic'))
+}
+
+if(btnDark){
+    btnDark.addEventListener('click', () => tipoPokemon('dark'))
+}
+
+if(btnPlanta){
+    btnPlanta.addEventListener('click', () => tipoPokemon('grass'))
+}
+
+if(btnBug){
+    btnBug.addEventListener('click', () => tipoPokemon('bug'))
+}
+
+if(btnFlying){
+    btnFlying.addEventListener('click', () => tipoPokemon('flying'))
+}
+
+if(btnNormal){
+    btnNormal.addEventListener('click', () => tipoPokemon('normal'))
+}
+
+if(btnWater){
+    btnWater.addEventListener('click', () => tipoPokemon('water'))
+}
+
+if(btnDragon){
+    btnDragon.addEventListener('click', () => tipoPokemon('dragon'))
+}
+
+if(btnGhost){
+    btnGhost.addEventListener('click', () => tipoPokemon('ghost'))
+}
+
+if(btnPoison){
+    btnPoison.addEventListener('click', () => tipoPokemon('poison'))
+}
+
+if(btnFire){
+    btnFire.addEventListener('click', () => tipoPokemon('fire'))
+}
+
+if(btnIce){
+    btnIce.addEventListener('click', () => tipoPokemon('ice'))
+}
+
+
+
+
+if(btnPesquisa){
+btnPesquisa.addEventListener('click', pesquisarPoke)
+}
+
+
+tipoPokemon('water')

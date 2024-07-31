@@ -1,127 +1,153 @@
+import {pokeDados, imagemPoke, typePoke} from './Util'
+
+export class Pokemon{
+    private height: number
+    private id: number
+    private name: string
+    private sprites: imagemPoke
+    private types: typePoke[]
+    private weight: number
+
+    constructor(dados: pokeDados) 
+    {
+        this.height = dados.height;
+        this.id = dados.id;
+        this.name = dados.name;
+        this.sprites = dados.sprites
+        this.types = dados.types
+        this.weight = dados.weight
+    }
 
 
+    private creatEl(tag: string, classes: string){
+        const el = document.createElement(tag)
+        el.className = classes
+
+        return el
+    }
 
 
-export interface Pokemon {
-    name: string;
-    id: number;
-    abilities: string;
-    height: number;
-    types: string | string[];
-    weight: number;
-    sprites: string[];
-    forms: string;
-}
+    public montarCard(pai: HTMLElement){
+        const card = this.creatEl('div', 'card-poke')
+  
+        if(this.types.length === 1){
+            card.innerHTML = `
+              <div><img src="${this.sprites.front_default}" alt=""></div>
+            <h1 class="nome-poke">${this.name}</h1>
 
+            <div class="flex tipo-poke">
+                <span class = "${this.types[0].type.name}">${this.types[0].type.name}</span>
+            </div>
 
+            <div class="info-poke">
+                <div class="altura">
+                    <h2>${this.height} M</h2>
+                    <h3>Altura</h3>
+                </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-//fazer um class com requisição em cima para chamar o construtor dessa class
-export class PokemonDados{
-    name: string;
-    id: number;
-    abilities: string;
-    height: number;
-    types: string | string[];
-    weight: number;
-    sprites: string[];
-    forms: string;
-   
-    constructor( e: Pokemon){
-        this.name = e.name
-        this.id = e.id
-        this.abilities = e.abilities
-        this.height = e.height
-        this.types = e.types
-        this.weight = e.weight
-        this.sprites = e.sprites
-        this.forms = e.forms
-}
-
-//craete element e add class
-createEl(div: string, classe: string | null){
-    const x = document.createElement(div)
-
-    if(classe){
-        const array = classe.split()
-        for(const a of array){
-            x.className = a
+                <div class="peso">
+                    <h2>${this.weight} KG</h2>
+                    <h3>Peso</h3>
+                </div>
+            </div><!--flex-->
+                <a href="pokemon.html"><button>Mais Detalhes</button></a>
+            `
         }
-    }
-    return x
-}
+        if(this.types.length >= 2){
+            card.innerHTML = `
+              <div><img src="${this.sprites.front_default}" alt=""></div>
+            <h1 class="nome-poke">${this.name}</h1>
 
-//montar card e adicina no elemento pai
-montarCard(pai: HTMLElement | null){
-    const card = this.createEl('div', 'card-poke')
-    const inter = this.createEl('div', 'interface-1')
-    const imagem = this.createEl('img', 'imagem')
-    const nome = this.createEl('h1', 'nome-poke')
-    const flex = this.createEl('div', 'flex tipo-poke')
-    const info = this.createEl('div', 'info-poke')
-    const altura = this.createEl('div', 'altura')
-    const metro = this.createEl('h2', '')
-    const metroh3 = this.createEl('h3', '')
-    const peso = this.createEl('div', 'peso')
-    const pesoh2 = this.createEl('h2', '')
-    const pesoh3 = this.createEl('h3', '')
-    const Abutton = this.createEl('a', '')
-    const button = this.createEl('button', '')
+            <div class="flex tipo-poke">
+                <span class = "${this.types[0].type.name}">${this.types[0].type.name}</span>
+                <span class = "${this.types[1].type.name}">${this.types[1].type.name}</span>
+            </div>
+
+            <div class="info-poke">
+                <div class="altura">
+                    <h2>${this.height} M</h2>
+                    <h3>Altura</h3>
+                </div>
+
+                <div class="peso">
+                    <h2>${this.weight} KG</h2>
+                    <h3>Peso</h3>
+                </div>
+            </div><!--flex-->
+                <a href="pokemon.html"><button>Mais Detalhes</button></a>
+            `
+        }
 
 
-    nome.innerHTML = this.name
-    metro.innerHTML = `${this.height}`
-    metroh3.innerHTML = 'Altura'
-    pesoh2.innerHTML = `${this.weight}`
-    pesoh3.innerHTML = `Peso`
-    button.innerHTML = 'Mais Detalhes'
+        this.backColorP(card, pai)
+       
 
-    for(const x of this.types){
-    const span = this.createEl('span', x)
-    span.innerHTML = x
-    flex.append(span)
+
     }
 
-    inter.append(imagem)
-    altura.append(metro)
-    altura.append(metroh3)
-    peso.append(pesoh2)
-    peso.append(pesoh3)
-    Abutton.append(button)
+    private backColorP(card: HTMLElement, pai: HTMLElement){
+    // Verifique se `this.types` está definido e tem pelo menos um elemento
+    const type1 = this.types[0]?.type?.name;
+    // Verifique se existe um segundo tipo antes de acessá-lo
+    const type2 = this.types[1]?.type?.name;
 
-    info.append(altura)
-    info.append(peso)
+    // Aplique a classe CSS apropriada com base nos tipos
+    if (type1 === 'water') {
+        card.classList.add('fundo-water');
 
-    card.append(inter)
-    card.append(nome)
-    card.append(flex)
-    card.append(info)
-    card.append(Abutton)
+    } else if (type1 === 'fire') {
+        card.classList.add('fundo-fire');
 
-    if(!pai) return
+    } else if (type1 === 'grass') {
+        card.classList.add('fundo-grass');
 
-    pai.append(card)
+    } else if(type1 === 'normal'){
+        card.classList.add('fundo-normal');
+
+    } else if(type1 === 'flying'){
+        card.classList.add('fundo-flying');
+
+    } else if(type1 === 'poison'){
+        card.classList.add('fundo-poison');
+
+    } else if(type1 === 'bug'){
+        card.classList.add('fundo-bug');
+
+    } else if(type1 === 'dragon'){
+        card.classList.add('fundo-dragon');
+
+    } else if(type1 === 'ghost'){
+        card.classList.add('fundo-ghost');
+
+    } else if(type1 === 'steel'){
+        card.classList.add('fundo-steel');
+
+    } else if(type1 === 'ice'){
+        card.classList.add('fundo-ice');
+
+    } else if(type1 === 'psychic'){
+        card.classList.add('fundo-psychic');
+
+    } else if(type1 === 'ground'){
+        card.classList.add('fundo-ground');
+
+    } else if(type1 === 'rock'){
+        card.classList.add('fundo-rock');
+
+    } else if(type1 === 'dark'){
+        card.classList.add('fundo-dark');
+
+    }
 
 
-}
 
 
 
 
+    
+        pai.append(card)
 
-
-
-
-
+    
+        
+    }
 }

@@ -29,8 +29,22 @@
     position: absolute;
 }
 
+.navbar-expand-lg{
+    background-color: #0b0b0b;
+    width: 100%;
+    position: fixed;
+    z-index: 333;
+    height: 50px;
+}
 
+.f{
+    font-size: 1.6rem;
 
+}
+
+#carouselExampleIndicators{
+    padding-top: 3rem;
+}
 
 /* =================== LADDING ================================= */
 
@@ -148,7 +162,8 @@
 .pokedex {
     
     background-color: rgb(0, 0, 0);
-    height: 200vh;
+    height: min-content;
+    min-height: 50rem;
 }
 
 .fundo-img{
@@ -180,31 +195,40 @@
 .grid-dex{
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    margin-top: 9rem;
+    margin-top: 15rem;
     gap: 2rem;
 }
 
 
 .card-poke{
-    background-image: linear-gradient(to top, #802424, #721919, #96242448, #a65c5c2c);
-    box-shadow: 0 3px 32px 0 rgba(99, 100, 117, 0.288);
+    box-shadow: 0 3px 32px 0px rgba(99, 100, 117, 0.288);
     backdrop-filter: blur( 5.5px );
     -webkit-backdrop-filter: blur( 5.5px );
-    border: 1px solid rgba(255, 255, 255, 0.18);
+    border: .5px solid rgba(255, 255, 255, 0.18);
     border-radius: 50px;
     border-top: none;
     width: 100%;
+    height: 24rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
     text-align: center;
-    margin-bottom: 5rem;
-    
+    margin-top: 8rem;
+    animation: aparecer .4s linear;
+    padding-bottom: 1rem;
+
+   
 }
 
 .card-poke img{
     width: 100%;
-    margin-top: -70px;
+    margin-top: -9rem;
+    
+}
+
+.nome-poke{
+
+    font-size: 2.5rem;
 }
 
 .card-poke .nome-poke, .altura, .peso{
@@ -214,7 +238,7 @@
 .info-poke{
     display: flex;
     justify-content: space-between;
-    width: 75%;
+    width: 80%;
     margin: 0 auto;
 }
 
@@ -229,11 +253,13 @@
 .tipo-poke{
     display: flex;
     justify-content: space-between;
-    gap: 5px;
+    gap: 8px;
+    margin-bottom: 1rem;
+
 }
 
 .tipo-poke span{
-    font-size: 1.3rem;
+    font-size: 1.5rem;
     color: white;
     width: 90px;
     border-radius: 5px;
@@ -244,20 +270,29 @@
     font-size: 25px;
     width: 70%;
     border-radius: 5px;
-    margin-top: 3px;
+    margin-top: 1rem;
     margin-bottom: 15px;
     background-color: #1a1a1a;
     color: white;
+    z-index: 1000;
 }
 
 
 /* =============== tipos ============== */
 
-.fogo1{
+.fire{
     background-color: #ffb006d0;
 }
 
-.inseto{
+.normal{
+    background-color: rgb(127, 127, 127);
+}
+
+.psychic{
+    background-color: rgb(190, 129, 210);
+}
+
+.bug{
     background-color: #92B34B;
 }
 
@@ -265,19 +300,19 @@
     background-color: #1D69B2;
 }
 
-.eletrico{
+.electric{
     background-color: #E8D340;
 }
 
-.fada{
+.fairy{
     background-color: #C695CC;
 }
 
-.lutador{
+.fighting{
     background-color: #9C3F61;
 }
 
-.voador{
+.flying{
     background-color: #96A7DD;
 }
 
@@ -285,21 +320,101 @@
     background-color: #5A658F;
 }
 
-.planta3{
+.grass{
     background-color: #67B567;
 }
 
-.agua2{
+.water{
     background-color: #027AA9;
 }
 
-.metal{
+.steel{
     background-color: #4e4e4e;
 }
 
 .dark{
-    background-color: #000000;
+    background-color: #39145e;
 }
+
+.ice{
+    background-color: #67b5af;
+}
+
+.ground{
+    background-color: #7a7540;
+}
+
+.rock{
+    background-color: #4b4a39;
+}
+
+.poison{
+    background-color: #6420be;
+}
+
+.fundo-grass{
+    background-image: linear-gradient(to top, hsl(128, 56%, 32%), hsl(128, 64%, 27%), hsla(128, 61%, 36%, 0.282), hsla(128, 29%, 51%, 0.173));
+}
+
+.fundo-normal{
+    background-image: linear-gradient(to top, #ffffff54, #b3b3b360, #bbbbbb1f, #ffffff00);
+}
+
+.fundo-fire{
+    background-image: linear-gradient(to top, #802424, #721919, #96242448, #a65c5c2c);
+}
+
+.fundo-water{
+    background-image: linear-gradient(to top, #245380, #193d72, #245f9648, #5c7aa62c);
+}
+
+.fundo-flying{
+    background-image: linear-gradient(to top, hsl(0, 6%, 35%), hsl(0, 6%, 35%), hsla(0, 6%, 36%, 0.282), hsla(0, 6%, 35%, 0.173));
+}
+
+.fundo-poison{
+    background-image: linear-gradient(to top, hsl(274, 56%, 32%), hsl(274, 64%, 27%), hsla(274, 61%, 36%, 0.282), hsla(274, 29%, 51%, 0.173));
+}
+
+.fundo-bug{
+    background-image: linear-gradient(to top, hsla(107, 28%, 52%, 0.617), hsla(100, 64%, 27%, 0.863), hsla(100, 61%, 36%, 0.282), hsla(100, 29%, 51%, 0.173));
+}
+
+.fundo-dragon{
+    background-image: linear-gradient(to top, hsla(228, 47%, 46%, 0.954), hsla(228, 64%, 27%, 0.697), hsla(228, 61%, 36%, 0.282), hsla(228, 29%, 51%, 0));
+}
+
+.fundo-ghost{
+    background-image: linear-gradient(to top, hsla(268, 21%, 36%, 0.954), hsla(268, 64%, 27%, 0.697), hsla(268, 61%, 36%, 0.282), hsla(268, 29%, 51%, 0));
+}
+
+.fundo-steel{
+    background-image: linear-gradient(to top, hsla(49, 6%, 64%, 0.954), hsla(60, 2%, 51%, 0.697), hsla(49, 18%, 58%, 0.282), hsla(49, 29%, 51%, 0));
+}
+
+.fundo-ice{
+    background-image: linear-gradient(to top, hsla(171, 59%, 73%, 0.954), hsla(171, 64%, 27%, 0.697), hsla(171, 61%, 36%, 0.282), hsla(171, 29%, 51%, 0));
+}
+
+.fundo-psychic{
+    background-image: linear-gradient(to top, hsla(288, 59%, 73%, 0.954), hsla(288, 29%, 44%, 0.697), hsla(288, 61%, 36%, 0.282), hsla(288, 29%, 51%, 0));
+}
+
+.fundo-ground{
+    background-image: linear-gradient(to top, hsla(43, 18%, 61%, 0.954), hsla(43, 29%, 44%, 0.697), hsla(43, 61%, 36%, 0.282), hsla(43, 29%, 51%, 0));
+}
+
+.fundo-rock{
+    background-image: linear-gradient(to top, hsla(42, 34%, 34%, 0.954), hsla(42, 34%, 44%, 0.697), hsla(42, 34%, 36%, 0.282), hsla(42, 34%, 51%, 0));
+}
+
+.fundo-dark{
+    background-image: linear-gradient(to top, hsla(289, 26%, 24%, 0.954), hsla(288, 39%, 37%, 0.621), hsla(288, 34%, 36%, 0.282), hsla(288, 34%, 51%, 0));
+}
+
+
+
+
 
 
 
@@ -312,4 +427,14 @@
   50%{
     transform: translateY(-25px);
   }
+}
+
+@keyframes aparecer {
+    0%, 100%{
+        transform: scale(1);
+    }
+
+    50%{
+        transform: scale(0.95);
+    }
 }
