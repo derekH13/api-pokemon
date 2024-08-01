@@ -50,7 +50,7 @@ export class Pokemon{
                     <h3>Peso</h3>
                 </div>
             </div><!--flex-->
-                <a href="pokemon.html"><button>Mais Detalhes</button></a>
+                <a href="#"><button>Mais Detalhes</button></a>
             `
         }
         if(this.types.length >= 2){
@@ -74,7 +74,7 @@ export class Pokemon{
                     <h3>Peso</h3>
                 </div>
             </div><!--flex-->
-                <a href="pokemon.html"><button>Mais Detalhes</button></a>
+                <a href="#"><button>Mais Detalhes</button></a>
             `
         }
 

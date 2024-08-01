@@ -11,15 +11,8 @@ html{
 }
 
 
-.fundoImg{
-    width: 70%;
-    height: 100vh;
-    z-index: -9;
-    position: absolute;
-}
-
 .fundo-tipo{
-    background-color: brown;
+    background-color: #000000;
 }
 
 .ladding-pokemonInfo{
@@ -33,9 +26,8 @@ html{
     position: absolute;
     margin-top: 3rem;
     font-size: 8rem;
-    margin-left: 2rem;
     text-shadow:
-    10px 10px 0px rgb(2510, 0, 0),   /* Sombra inferior direita */
+    10px 10px 0px #333,   /* Sombra inferior direita */
     -10px 10px 0px black,  /* Sombra inferior esquerda */
     10px -10px 0px black,  /* Sombra superior direita */
     -10px -10px 0px black, /* Sombra superior esquerda */
@@ -45,15 +37,13 @@ html{
     0px -10px 0px black;  /* Sombra superior */
 }
 
-.ranking{
 
-}
 
 .container-ranking{
-    background-color: black;
+    background-color: #464646;
     height: 100vh;
-    width:  35rem;
-    border: solid 10px white;
+    width:  30rem;
+    border: solid 10px #333;
     border-top-left-radius: 30px;
     border-bottom-left-radius: 30px;
     height: 810px;
@@ -63,13 +53,142 @@ html{
 .pokemon-info{
     display: flex;
     justify-content: center;
-    width: 30%;
+    align-items: center;
+    width: 48%;
+
 }
 
 .pokemon-info .card-poke{
-height: 450px;
-margin-top: 25rem;
-width: 300px;
-background-image: linear-gradient(to top, #802424, #721919, #96242448, #a65c5c2c);
+display: flex;
+flex-direction: row;
 
+}
+
+.nome-poke, .poke-imgInfo{
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 20rem;
+}
+
+.container{
+    margin-top: 15rem;
+    padding: 3rem;
+    display: flex;
+    align-items: center;
+    background-image: linear-gradient(to top, #802424, #721919, #96242448, #a65c5c2c);
+    border: solid 10px #333;
+    width: 100%;
+    border-radius: 30px;
+}
+
+.info-poke{
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-column{
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.tipo-poke span{
+    padding: 5px;
+}
+
+.info-poke{
+display: flex;
+justify-content: space-between;
+}
+
+.altura, .peso{
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+
+}
+
+
+
+.altura h2, .altura h3, .peso h2, .peso h3, .nome-poke{
+    font-size: 50px;
+}
+
+.altura h2, .peso h2{
+    color: #ffffffb9;
+}
+
+
+@media (max-width: 1000px) {
+
+    html{
+        overflow-y: auto;
+
+    }
+
+ .flex1{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+ }
+
+ .container{
+    margin-top: 15rem;
+    padding: 3rem;
+    display: flex;
+    align-items: center;
+    background-image: linear-gradient(to top, #802424, #721919, #96242448, #a65c5c2c);
+    border: solid 10px #333;
+    width: 100%;
+    border-radius: 30px;
+    justify-content: space-between;
+}
+
+.poke-imgInfo{
+    display: flex;
+    justify-content: space-between;
+}
+
+.interface{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.container-ranking{
+    background-color: #464646;
+    border: solid 10px #333;
+    border-radius: 30px;
+    height: 810px;
+    margin-top: 6rem;
+    width: 90%;
+}
+
+.pokemon-info{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+}
+
+.ranking{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+
+.nome-poke, .poke-imgInfo{
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 20%;
+    height: auto;
+}
 }
